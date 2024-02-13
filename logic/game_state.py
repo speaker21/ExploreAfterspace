@@ -4,6 +4,7 @@ class GameState:
         self.day = 0
         self.speed_up = False
         self.frames = []
+        self.stars_list = []
 
     def changeState(self, button):
         if self.pause == True:
@@ -40,7 +41,5 @@ class GameState:
             
     def show_star_info(self, star):
         star_info_frame = self.get_star_info_frame()
-        star_info_frame.name_label.setText(star.name)
-        star_info_frame.planets_label.setText(str(star.planets))
-        star_info_frame.population_label.setText(str(star.population))
+        star_info_frame.set_data(star)
         self.change_frame('star_info')

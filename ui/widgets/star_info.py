@@ -25,3 +25,13 @@ class StarInfo(QWidget):
         layout.addWidget(self.planets_label)
         layout.addWidget(self.population_label)
         layout.addStretch(1)
+    
+    def set_data(self, star):
+        self.current_star = star
+        self.name_label.setText(star.name)
+        self.planets_label.setText(str(star.planets))
+        self.population_label.setText(str(star.population))
+        
+    
+    def update_info(self):
+        self.set_data(self.current_star)

@@ -12,8 +12,9 @@ class StarMap(QWidget):
         with open('data/stars.json', 'r', encoding='utf-8') as stars_json:
             star_list = json.load(stars_json)
         for star in star_list:
-            qbtn = Star(self, star, game_state)
-            qbtn.move(star['coordinates']['x'], star['coordinates']['y'])
+            star_sprite = Star(self, star, game_state)
+            star_sprite.move(star['coordinates']['x'], star['coordinates']['y'])
+            game_state.stars_list.append(star_sprite)
         self.setGeometry(*map_size)
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.setStyleSheet('background-color: black')

@@ -10,7 +10,7 @@ class Star(QPushButton):
         if 'population' in star:
             self.population = star['population']
         else:
-            self.population = 'None'
+            self.population = None
         self.clicked.connect(lambda:game_state.show_star_info(self))
 
         self.setGeometry(20,20,20,20)
@@ -18,6 +18,6 @@ class Star(QPushButton):
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.setStyleSheet(f"border-radius : 10; border : 1px solid black; background-color: {self.color}")
         
-    
-
-
+    def calculate_population(self):
+        if self.population:
+            self.population+=1
