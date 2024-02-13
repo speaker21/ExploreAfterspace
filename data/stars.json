@@ -1,0 +1,15 @@
+[
+    {
+        "name":"Солнце",
+        "planets":"Меркурий, Венера, Земля, Марс",
+        "coordinates": {"x":100, "y":100},
+        "color":"yellow",
+        "population":70000000
+    },
+    {
+        "name":"Альфа Центавра",
+        "planets":"Альфа центавра 1",
+        "coordinates": {"x":200, "y":200},
+        "color":"red"
+    }
+]

@@ -32,4 +32,15 @@ class GameState:
         for frame in self.frames:
             if (frame.name == name) and not (frame.isVisible()):
                 frame.show()
+
+    def get_star_info_frame(self):
+        for frame in self.frames:
+            if frame.name == 'star_info':
+                return frame
             
+    def show_star_info(self, star):
+        star_info_frame = self.get_star_info_frame()
+        star_info_frame.name_label.setText(star.name)
+        star_info_frame.planets_label.setText(str(star.planets))
+        star_info_frame.population_label.setText(str(star.population))
+        self.change_frame('star_info')

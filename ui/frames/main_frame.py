@@ -3,7 +3,8 @@ from config import map_size
 from PyQt5.QtCore import Qt
 from ui.widgets.header import Header
 from ui.widgets.map import StarMap
-from ui.widgets.map2 import StarMap2
+from ui.widgets.other_frame import OtherFrame
+from ui.widgets.star_info import StarInfo
 
 class MainFrame(QWidget):
     def __init__(self, game_state):
@@ -17,9 +18,10 @@ class MainFrame(QWidget):
         layout = QVBoxLayout()
         self.setLayout(layout)
         self.header = Header(game_state)
-        self.star_map = StarMap()
-        self.other_frame = StarMap2()
-        frames = (self.star_map, self.other_frame)
+        self.star_info = StarInfo()
+        self.star_map = StarMap(game_state)
+        self.other_frame = OtherFrame()
+        frames = (self.star_map, self.other_frame, self.star_info)
 
         layout.addWidget(self.header)
         for frame in frames:
