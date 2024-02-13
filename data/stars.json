@@ -1,15 +1,33 @@
 [
     {
         "name":"Солнце",
-        "planets":"Меркурий, Венера, Земля, Марс",
         "coordinates": {"x":100, "y":100},
         "color":"yellow",
-        "population":70000000
+        "population":70000000,
+        "planets":[
+            {
+                "name":"Меркурий",
+                "population":0
+            },
+            {
+                "name":"Земля",
+                "population":7000000
+            }
+        ]
     },
     {
         "name":"Альфа Центавра",
-        "planets":"Альфа центавра 1",
         "coordinates": {"x":200, "y":200},
-        "color":"red"
+        "color":"red",
+        "planets":[
+            {
+                "name":"Альфа Центавра 1",
+                "population":0
+            },
+            {
+                "name":"Альфа Центавра 2",
+                "population":0
+            }
+        ]
     }
 ]

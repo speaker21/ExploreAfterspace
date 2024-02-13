@@ -5,7 +5,7 @@ class StarSprite(QPushButton):
     def __init__(self, parent, game_state, star) -> None:
         super().__init__('', parent)
         self.clicked.connect(
-            lambda: game_state.star_info_frame.show_window(star))
+            lambda: game_state.star_info_frame.show_window(star, game_state))
         self.setGeometry(20, 20, 20, 20)
         self.setToolTip(star.name)
         self.setAttribute(Qt.WA_StyledBackground, True)

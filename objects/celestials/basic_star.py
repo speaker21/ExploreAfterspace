@@ -1,11 +1,10 @@
-from PyQt5.QtWidgets import QPushButton, QWidget
-from PyQt5.QtCore import QCoreApplication, Qt
+from PyQt5.QtWidgets import QWidget
 
 class Star(QWidget):
     def __init__(self, star):
         super().__init__()
         self.name = star['name']
-        self.planets = star['planets']
+        self.planets = []
         self.color = star['color']
         if 'population' in star:
             self.population = star['population']

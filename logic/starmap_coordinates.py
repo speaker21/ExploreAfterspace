@@ -1,7 +1,7 @@
 import random
 
 border = 10
-
+# TODO
 def make_star_coordinates(map_width, map_height, stars_count):
     stars_list = []
     canvas_width = map_width - border

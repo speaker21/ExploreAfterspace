@@ -6,6 +6,7 @@ class GameState:
         self.frames = []
         self.stars_list = []
         self.star_info_frame = None
+        self.planet_info_frame = None
 
     def changeState(self, button):
         if self.pause == True:
