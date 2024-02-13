@@ -9,6 +9,7 @@ class StarInfo(QWidget):
     def __init__(self):
         super().__init__()
         self.name = 'star_info'
+        self.current_star = None
         
         self.setGeometry(*map_size)
         self.setAttribute(Qt.WA_StyledBackground, True)
@@ -34,4 +35,5 @@ class StarInfo(QWidget):
         
     
     def update_info(self):
-        self.set_data(self.current_star)
+        if self.current_star:
+            self.set_data(self.current_star)
