@@ -11,7 +11,7 @@ class Star(QPushButton):
             self.population = star['population']
         else:
             self.population = None
-        self.clicked.connect(lambda:game_state.show_star_info(self))
+        self.clicked.connect(lambda:game_state.star_info_frame.show_window(self))
 
         self.setGeometry(20,20,20,20)
         self.setToolTip(self.name)

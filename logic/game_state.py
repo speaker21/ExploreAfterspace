@@ -5,6 +5,7 @@ class GameState:
         self.speed_up = False
         self.frames = []
         self.stars_list = []
+        self.star_info_frame = None
 
     def changeState(self, button):
         if self.pause == True:
@@ -33,13 +34,4 @@ class GameState:
         for frame in self.frames:
             if (frame.name == name) and not (frame.isVisible()):
                 frame.show()
-
-    def get_star_info_frame(self):
-        for frame in self.frames:
-            if frame.name == 'star_info':
-                return frame
             
-    def show_star_info(self, star):
-        star_info_frame = self.get_star_info_frame()
-        star_info_frame.set_data(star)
-        self.change_frame('star_info')

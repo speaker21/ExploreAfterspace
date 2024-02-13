@@ -5,4 +5,4 @@ def change_label_value(game_state, label):
     for star in game_state.stars_list:
         star.calculate_population()
 
-    game_state.get_star_info_frame().update_info()
+    game_state.star_info_frame.update_info()
