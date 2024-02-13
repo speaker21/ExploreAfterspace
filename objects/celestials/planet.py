@@ -1,14 +1,12 @@
-from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtWidgets import QPushButton, QWidget
 from PyQt5.QtCore import QCoreApplication, Qt
 
-class Star(QPushButton):
-    def __init__(self, parent, star, game_state):
+class Planet(QWidget):
+    def __init__(self, parent, planet, game_state):
         super().__init__('', parent)
-        self.name = star['name']
-        self.planets = star['planets']
-        self.color = star['color']
-        if 'population' in star:
-            self.population = star['population']
+        self.name = planet['name']
+        if 'population' in planet:
+            self.population = planet['population']
         else:
             self.population = None
         self.clicked.connect(lambda:game_state.star_info_frame.show_window(self))

@@ -1,6 +1,4 @@
 from PyQt5.QtWidgets import QWidget
-from ui.stars.basic_star import Star
-from logic.starmap_coordinates import make_star_coordinates
 from config import map_size
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QPushButton, QVBoxLayout, QLabel
