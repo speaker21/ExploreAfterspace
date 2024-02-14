@@ -19,12 +19,8 @@ class PlanetInfo(QWidget):
         self.current_planet_population = None
         self.setLayout(self.content_layout)
 
-    def create_content(self, planet, game_state):
+    def create_content(self, planet):
         self.current_planet = planet
-        self.current_planet_population = planet.population
-        self.current_planet_ore = planet.ore
-        self.current_planet_gas = planet.gas
-        self.current_planet_food = planet.food
         if self.content:
             self.content.deleteLater()
         self.content = QWidget()
@@ -36,12 +32,22 @@ class PlanetInfo(QWidget):
         self.ore_label = InformationLabel('Руда', planet.ore)
         self.gas_label = InformationLabel('Газ', planet.gas)
         self.food_label = InformationLabel('Пища', planet.food)
+        if planet.production_building:
+            self.current_planet_building_production = planet.production_building
+            self.building_food_production_label = InformationLabel('Производство пищи', str(planet.production_building.size))
+
+        build_button = QPushButton('build')
+        build_button.clicked.connect(lambda:planet.production_building.build_new(self))
 
         layout.addWidget(self.name_label)
         layout.addWidget(self.population_label)
         layout.addWidget(self.ore_label)
         layout.addWidget(self.gas_label)
         layout.addWidget(self.food_label)
+        if self.current_planet_building_production:
+            layout.addWidget(self.building_food_production_label)
+        layout.addWidget(build_button)
+        
         layout.addStretch(1)
         self.content_layout.addWidget(self.content)
 
@@ -51,27 +57,29 @@ class PlanetInfo(QWidget):
             self.update_ore()
             self.update_gas()
             self.update_food()
+            self.update_build_production()
 
     def update_population(self):
-        if self.current_planet_population != self.current_planet.population:
-            self.current_planet_population = self.current_planet.population
+        if  self.population_label.value.text() != self.current_planet.population:
             self.population_label.value.setText(str(self.current_planet.population))
     
     def update_ore(self):
-        if self.current_planet_ore != self.current_planet.ore:
-            self.current_planet_ore = self.current_planet.ore
+        if self.ore_label.value.text() != self.current_planet.ore:
             self.ore_label.value.setText(str(self.current_planet.ore))
 
     def update_gas(self):
-        if self.current_planet_gas != self.current_planet.gas:
-            self.current_planet_gas = self.current_planet.gas
+        if self.gas_label.value.text() != self.current_planet.gas:
             self.gas_label.value.setText(str(self.current_planet.gas))
 
     def update_food(self):
-        if self.current_planet_food != self.current_planet.food:
-            self.current_planet_food = self.current_planet.food
+        if self.food_label.value.text() != self.current_planet.food:
             self.food_label.value.setText(str(self.current_planet.food))
 
-    def show_window(self, star, game_state):
-        self.create_content(star, game_state)
+    def update_build_production(self):
+        if self.building_food_production_label.value.text()!=self.current_planet.production_building.size:
+            self.building_food_production_label.value.setText(str(self.current_planet.production_building.size))
+            
+
+    def show_window(self, star):
+        self.create_content(star)
         self.show()

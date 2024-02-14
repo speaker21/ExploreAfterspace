@@ -54,18 +54,15 @@ class StarInfo(QWidget):
             self.update_gas()
 
     def update_population(self):
-        if self.current_star_population != self.current_star.population:
-            self.current_star_population = self.current_star.population
+        if self.population_label.value.text() != self.current_star.population:
             self.population_label.value.setText(str(self.current_star.population))
 
     def update_ore(self):
-        if self.current_star_ore != self.current_star.ore:
-            self.current_star_ore = self.current_star.ore
+        if self.ore_label.value.text() != self.current_star.ore:
             self.ore_label.value.setText(str(self.current_star.ore))
 
     def update_gas(self):
-        if self.current_star_gas != self.current_star.gas:
-            self.current_star_gas = self.current_star.gas
+        if self.gas_label.value.text() != self.current_star.gas:
             self.gas_label.value.setText(str(self.current_star.gas))
 
     def show_window(self, star, game_state):

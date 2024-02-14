@@ -1,9 +1,7 @@
-from PyQt5.QtWidgets import QPushButton, QWidget
-from PyQt5.QtCore import QCoreApplication, Qt
+from objects.buildings.food_production import FoodProduction
 
-class Planet(QWidget):
+class Planet:
     def __init__(self, planet):
-        super().__init__()
         self.name = planet['name']
         if 'population' in planet:
             self.population = planet['population']
@@ -12,6 +10,16 @@ class Planet(QWidget):
         self.ore = planet['ore']
         self.gas = planet['gas']
         self.food = planet['food']
+        self.buildings = []
+        if 'buildings' in planet:
+            for build in planet['buildings']:
+                if build['name'] == 'food_production':
+                    build_object = FoodProduction(build['size'])
+                    self.production_building = build_object
+                    self.buildings.append(build_object)
+        else:
+            self.production_building = FoodProduction(0)
+
 
     def calculate_state(self):
         self.food_production_and_consumption()
@@ -30,5 +38,5 @@ class Planet(QWidget):
         self.gas-=20
 
     def food_production_and_consumption(self):
-        self.food+=10000
+        self.food += self.production_building.food_production*self.production_building.size
         self.food = self.food - round(self.population*0.7)

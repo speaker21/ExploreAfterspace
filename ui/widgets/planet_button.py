@@ -5,5 +5,5 @@ class PlanetButton(QPushButton):
     def __init__(self, game_state, planet) -> None:
         super().__init__(planet.name)
         self.clicked.connect(
-            lambda: game_state.planet_info_frame.show_window(planet, game_state))
+            lambda: game_state.planet_info_frame.show_window(planet))
         self.setGeometry(20, 20, 20, 20)
