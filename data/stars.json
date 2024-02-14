@@ -6,11 +6,15 @@
         "planets":[
             {
                 "name":"Меркурий",
-                "population":0
+                "population":0,
+                "ore":10000,
+                "gas":0
             },
             {
                 "name":"Земля",
-                "population":7000000
+                "population":7000000  ,              
+                "ore":5000,
+                "gas":10000
             }
         ]
     },
@@ -21,11 +25,15 @@
         "planets":[
             {
                 "name":"Альфа Центавра 1",
-                "population":0
+                "population":0,
+                "ore":60000,
+                "gas":3000
             },
             {
                 "name":"Альфа Центавра 2",
-                "population":0
+                "population":0,
+                "ore":7000,
+                "gas":9000
             }
         ]
     }

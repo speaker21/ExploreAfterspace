@@ -4,8 +4,8 @@ from logic.game_state import GameState
 import threading
 from logic.main_loop import main_loop
 from ui.frames.main_frame import MainFrame
-from ui.widgets.star_info import StarInfo
-from ui.widgets.planet_info import PlanetInfo
+from ui.widgets.star_info.star_info import StarInfo
+from ui.widgets.planet_info.planet_info import PlanetInfo
 from logic.celestials_init import celestials_init
 from PyQt5.QtCore import pyqtSignal, QObject
 
