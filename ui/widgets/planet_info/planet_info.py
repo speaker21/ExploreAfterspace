@@ -24,19 +24,24 @@ class PlanetInfo(QWidget):
         self.current_planet_population = planet.population
         self.current_planet_ore = planet.ore
         self.current_planet_gas = planet.gas
+        self.current_planet_food = planet.food
         if self.content:
             self.content.deleteLater()
         self.content = QWidget()
         layout = QVBoxLayout()
         self.content.setLayout(layout)
+
         self.name_label = InformationLabel('Название', planet.name)
         self.population_label = InformationLabel('Население', planet.population)
         self.ore_label = InformationLabel('Руда', planet.ore)
         self.gas_label = InformationLabel('Газ', planet.gas)
+        self.food_label = InformationLabel('Пища', planet.food)
+
         layout.addWidget(self.name_label)
         layout.addWidget(self.population_label)
         layout.addWidget(self.ore_label)
         layout.addWidget(self.gas_label)
+        layout.addWidget(self.food_label)
         layout.addStretch(1)
         self.content_layout.addWidget(self.content)
 
@@ -45,6 +50,7 @@ class PlanetInfo(QWidget):
             self.update_population()
             self.update_ore()
             self.update_gas()
+            self.update_food()
 
     def update_population(self):
         if self.current_planet_population != self.current_planet.population:
@@ -60,6 +66,11 @@ class PlanetInfo(QWidget):
         if self.current_planet_gas != self.current_planet.gas:
             self.current_planet_gas = self.current_planet.gas
             self.gas_label.value.setText(str(self.current_planet.gas))
+
+    def update_food(self):
+        if self.current_planet_food != self.current_planet.food:
+            self.current_planet_food = self.current_planet.food
+            self.food_label.value.setText(str(self.current_planet.food))
 
     def show_window(self, star, game_state):
         self.create_content(star, game_state)
