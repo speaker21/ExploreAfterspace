@@ -31,12 +31,29 @@ class PlanetInfo(QWidget):
         self.content_layout.addWidget(self.content)
         
     
-    def update_info(self, game_state):
-        if self.current_planet:
-            self.create_content(self.current_planet, game_state)
+    def create_content(self, planet, game_state):
+        self.current_planet = planet
+        self.current_planet_population = planet.population
+        if self.content:
+            self.content.deleteLater()
+        self.content = QWidget()
+        layout = QVBoxLayout()
+        self.content.setLayout(layout)
+        self.name_label = QLabel(planet.name)
+        self.population_label = QLabel(str(planet.population))
+
+        layout.addWidget(self.name_label)
+        layout.addWidget(self.population_label)
+        self.content_layout.addWidget(self.content)
+
+    def update_info(self):
+        if self.isVisible():
+            self.update_population()
+
+    def update_population(self):
+        if self.current_planet_population != self.current_planet.population:
+            self.population_label.setText(str(self.current_planet.population))
 
     def show_window(self, star, game_state):
         self.create_content(star, game_state)
         self.show()
-
-    

@@ -37,4 +37,5 @@ class GameState:
                 frame.show()
             
     def event_game_tick(self):
-        self.star_info_frame.update_info(self)
+        self.star_info_frame.update_info()
+        self.planet_info_frame.update_info()

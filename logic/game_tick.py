@@ -4,5 +4,7 @@ def game_tick(game_state, label, signaller):
 
     for star in game_state.stars_list:
         star.calculate_population()
+        for planet in star.planets:
+            planet.calculate_population()
 
     signaller.progress_changed.emit(game_state)
