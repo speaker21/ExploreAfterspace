@@ -4,6 +4,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QPushButton, QVBoxLayout, QLabel
 from ui.widgets.planet_button import PlanetButton
 
+
 class StarInfo(QWidget):
     def __init__(self):
         super().__init__()
@@ -12,13 +13,16 @@ class StarInfo(QWidget):
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.setStyleSheet('background-color: green')
         self.resize(400, 400)
-        self.current_star = None
         self.content = None
         self.content_layout = QVBoxLayout()
         self.setLayout(self.content_layout)
 
+        self.current_star = None
+        self.current_star_population = None
+
     def create_content(self, star, game_state):
         self.current_star = star
+        self.current_star_population = star.population
         if self.content:
             self.content.deleteLater()
         self.content = QWidget()
@@ -33,14 +37,15 @@ class StarInfo(QWidget):
         layout.addWidget(self.name_label)
         layout.addWidget(self.population_label)
         self.content_layout.addWidget(self.content)
-        
-    
-    def update_info(self, game_state):
-        if self.current_star:
-            self.create_content(self.current_star, game_state)
+
+    def update_info(self):
+        if self.isVisible():
+            self.update_population()
+
+    def update_population(self):
+        if self.current_star_population != self.current_star.population:
+            self.population_label.setText(str(self.current_star.population))
 
     def show_window(self, star, game_state):
         self.create_content(star, game_state)
         self.show()
-
-    

@@ -1,14 +1,14 @@
 from time import sleep
-from logic.game_tick import change_label_value
+from logic.game_tick import game_tick
 
 def main_loop(game_state, day_label, signaller):
     print('loop works')
     while True:
         if game_state.pause == False:
             if game_state.speed_up == False:
-                change_label_value(game_state, day_label, signaller)
+                game_tick(game_state, day_label, signaller)
             elif game_state.speed_up == True:
-                for _ in range(5):
-                    change_label_value(game_state, day_label, signaller)
+                for _ in range(10000):
+                    game_tick(game_state, day_label, signaller)
             print(game_state.day)
         sleep(1)

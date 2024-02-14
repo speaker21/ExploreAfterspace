@@ -24,7 +24,7 @@ if __name__ == '__main__':
     game_state.planet_info_frame = planet_info
 
     signaller = Signaller()
-    signaller.progress_changed.connect(star_info.update_info)
+    signaller.progress_changed.connect(game_state.event_game_tick)
     logic_thread = threading.Thread(target=main_loop, args=(game_state, main_frame.header.label, signaller), daemon=True)
     logic_thread.start()
 

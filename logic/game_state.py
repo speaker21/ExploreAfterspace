@@ -36,3 +36,5 @@ class GameState:
             if (frame.name == name) and not (frame.isVisible()):
                 frame.show()
             
+    def event_game_tick(self):
+        self.star_info_frame.update_info(self)
