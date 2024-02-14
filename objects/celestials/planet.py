@@ -12,4 +12,4 @@ class Planet(QWidget):
 
     def calculate_population(self):
         if self.population:
-            self.population+=1
+            self.population+=10

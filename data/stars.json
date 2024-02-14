@@ -3,7 +3,6 @@
         "name":"Солнце",
         "coordinates": {"x":100, "y":100},
         "color":"yellow",
-        "population":70000000,
         "planets":[
             {
                 "name":"Меркурий",
